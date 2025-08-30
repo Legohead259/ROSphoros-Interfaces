@@ -1,0 +1,56 @@
+# File: rosphoros_interfaces/srv/SetGPIOState.srv
+#
+# rosphoros_interfaces: A custom interface set defining messages and interactions between nodes in the ROSphoros test bed.
+#
+# Description:
+# This service changes the state of a GPIO on a ROSphoros controller.
+# For now, this state is only digital - on or off.
+# The service will return a series of codes depending on if the request was valid and successfully fulfilled.
+#
+# Request:
+# uint8 GPIO        The requested GPIO
+# uint8 state       The desired GPIO state
+#
+# Response:
+# uint8 result      The result of the operation. A failure may indicate that the requested pin and state are incompatible or something is wrong with the pin.
+#
+# The following are valid GPIO to control with this service.
+# The pins in the table correspond to the pinout on the physical controller board and are only for reference
+# See the left pinout on https://www.waveshare.com/wiki/ESP32-P4-Nano-StartPage#Overview for more information
+#
+#  PIN | GPIO | ALT 1      | ALT 2
+# -----|------|------------|-------------
+#  3   |  7   | TOUCH_CH_5 | SDA
+#  5   |  8   | TOUCH_CH_6 | SCL
+#  7   |  23  | ADC1_CH_7  | 
+#  8   |  37  | UART0_TXD  | 
+#  10  |  38  | UART0_RXD  | 
+#  11  |  5   | TOUCH_CH_3 | 
+#  12  |  4   | TOUCH_CH_2 | 
+#  13  |  20  | ADC1_CH_4  | 
+#  15  |  21  | ADC1_CH_5  | 
+#  16  |  22  | ADC1_CH_6  | 
+#  18  |  24  | USB1P1_N0  | 
+#  19  |  25  | USB1P1_P0  | 
+#  21  |  26  | USB1P1_N1  | 
+#  22  |  27  | USB1P1_P1  | 
+#  23  |  32  |            | 
+#  24  |  33  |            | 
+#  26  |  36  |            |  
+#
+# State | Name
+# ------|------------------------
+#   0   | OFF
+#   1   | ON
+#
+# Result | Description
+# -------|----------------------------
+#    0   | Operation success; GPIO state changed as requested or GPIO already in requested state.
+#    1   | Operation failed - Unspecified error; GPIO state does not match requested state
+#    2   | Operation failed - Requested GPIO is not valid; consult table above
+#    3   | Operation failed - Requested GPIO is in use by another process and cannot be unlocked
+
+uint8 gpio
+uint8 mode
+---
+uint8 result
