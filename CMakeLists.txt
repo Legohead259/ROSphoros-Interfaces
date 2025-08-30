@@ -11,6 +11,18 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
+find_package(rosidl_default_generators REQUIRED)
+
+file(GLOB_RECURSE MSG_FILES CONFIGURE_DEPENDS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} msg/*.msg)
+file(GLOB_RECURSE SRV_FILES CONFIGURE_DEPENDS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} srv/*.srv)
+file(GLOB_RECURSE ACTION_FILES CONFIGURE_DEPENDS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} action/*.action)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  ${MSG_FILES}
+  ${SRV_FILES}
+  ${ACTION_FILES}
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
