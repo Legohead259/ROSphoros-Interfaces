@@ -5,6 +5,7 @@
 # Description:
 # This service changes the state of a GPIO on a ROSphoros controller.
 # For now, this state is only digital - on or off.
+# There is an additional requested state called "TOGGLE" which will invert the GPIO state.
 # The service will return a series of codes depending on if the request was valid and successfully fulfilled.
 #
 # Request:
@@ -42,7 +43,7 @@
 # ------|------------------------
 #   0   | OFF
 #   1   | ON
-#   2   | TOGGLE; invert the current state
+#   2   | TOGGLE
 #
 # Result | Description
 # -------|----------------------------
