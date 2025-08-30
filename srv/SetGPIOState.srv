@@ -42,6 +42,7 @@
 # ------|------------------------
 #   0   | OFF
 #   1   | ON
+#   2   | TOGGLE; invert the current state
 #
 # Result | Description
 # -------|----------------------------
