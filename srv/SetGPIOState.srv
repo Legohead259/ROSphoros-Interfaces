@@ -9,7 +9,7 @@
 # The service will return a series of codes depending on if the request was valid and successfully fulfilled.
 #
 # Request:
-# uint8 GPIO        The requested GPIO
+# uint8 gpio        The requested GPIO
 # uint8 state       The desired GPIO state
 #
 # Response:
@@ -53,6 +53,6 @@
 #    3   | Operation failed - Requested GPIO is in use by another process and cannot be unlocked
 
 uint8 gpio
-uint8 mode
+uint8 state
 ---
 uint8 result
